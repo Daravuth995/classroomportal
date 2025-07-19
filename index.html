@@ -3,32 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Classroom</title>
+    <title>Student Portal - Modern Learning Hub</title>
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Koulen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Koulen&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --primary-light: #4895ef;
-            --secondary: #3f37c9;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #2b2d42;
-            --dark-blue: #1a2b4a;
-            --white: #ffffff;
-            --gray: #8d99ae;
-            --light-gray: #edf2f4;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --border-radius: 12px;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            /* New Color Palette */
+            --primary-light: #BAC8D9;
+            --primary-dark: #193940;
+            --accent-green: #9BF272;
+            --accent-green-dark: #7ABF5A;
+            
+            /* Derived Colors */
+            --primary: rgba(26, 57, 64, 0.9);
+            --secondary: rgba(155, 242, 114, 0.7);
+            
+            /* Glassmorphism Variables */
+            --glass-white: rgba(255, 255, 255, 0.25);
+            --glass-white-light: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: rgba(31, 38, 135, 0.37);
+            
+            /* Theme Colors */
+            --background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2e2e 100%);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            
+            /* Design System */
+            --border-radius: 16px;
+            --border-radius-small: 8px;
+            --border-radius-large: 24px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            
+            /* Shadows */
+            --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.1);
+            --shadow-floating: 0 15px 35px rgba(0, 0, 0, 0.2);
+            --shadow-elevation: 0 25px 50px rgba(0, 0, 0, 0.3);
+            
+            /* Transitions */
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-fast: all 0.2s ease-out;
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
         * {
@@ -38,318 +61,36 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            color: var(--dark);
+            font-family: 'Inter', 'Poppins', sans-serif;
+            background: var(--background);
+            background-attachment: fixed;
+            color: var(--text-primary);
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-attachment: fixed;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
             position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            scroll-behavior: smooth;
         }
         
-        /* Announcement Section - Now Fully Configurable */
-        .announcement-container {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow-lg);
-            color: white;
-            position: relative;
-            overflow: hidden;
-            border-left: 5px solid var(--accent);
-            animation: pulseBorder 3s infinite alternate;
-            backdrop-filter: blur(10px);
-            background: linear-gradient(135deg, rgba(67, 97, 238, 0.9), rgba(63, 55, 201, 0.9));
-            border: 1px solid var(--glass-border);
-        }
-        
-        .announcement-container::before {
+        /* New Background Effects */
+        body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                            rgba(255,255,255,0.1) 0%, 
-                            rgba(255,255,255,0.3) 50%, 
-                            rgba(255,255,255,0.1) 100%);
-            transform: translateX(-100%);
-            animation: shimmer 3s infinite;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(186, 200, 217, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(155, 242, 114, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 50%, rgba(25, 57, 64, 0.2) 0%, transparent 50%);
+            z-index: -2;
+            animation: gradientShift 15s ease infinite alternate;
         }
         
-        .announcement-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .announcement-header i {
-            margin-right: 10px;
-            font-size: 1.5rem;
-            color: var(--accent);
-            animation: bounce 2s infinite;
-        }
-        
-        .announcement-content {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .announcement-content p {
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-        
-        .announcement-content p:first-child {
-            font-weight: 500;
-            font-size: 1.2rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .announcement-content p:first-child::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: underlineExpand 1.5s forwards;
-        }
-        
-        /* Dictionary Button */
-        .dictionary-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            background-color: var(--white);
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 6px 12px;
-            font-size: 0.8rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-            text-decoration: none;
-            z-index: 2;
-            font-weight: 500;
-        }
-        .dictionary-btn:hover {
-            background-color: var(--primary-light);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        @keyframes pulseBorder {
-            0% { border-left-color: var(--accent); }
-            100% { border-left-color: var(--success); }
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        
-        @keyframes underlineExpand {
-            to { transform: scaleX(1); }
-        }
-        
-        @keyframes shimmer {
-            100% { transform: translateX(100%); }
-        }
-        
-        /* Header Section */
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-            padding: 2.5rem 2rem;
-            width: 100%;
-            max-width: 800px;
-            background: var(--glass-bg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-        
-        .khmer-welcome {
-            font-family: 'Koulen', cursive;
-            font-size: 2rem;
-            margin: 1rem 0;
-            color: var(--dark);
-            position: relative;
-            display: inline-block;
-            padding: 0 1rem;
-        }
-        
-        h2 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-            color: var(--gray);
-        }
-        
-        .instructor {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 0;
-            font-weight: 500;
-        }
-        
-        .instructor span {
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        /* Buttons Container */
-        .buttons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-            width: 100%;
-            max-width: 1000px;
-        }
-        
-        .btn {
-            position: relative;
-            padding: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: white;
-            border-radius: var(--border-radius);
-            background: var(--primary);
-            border: none;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            z-index: 1;
-            min-height: 120px;
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                            rgba(255,255,255,0.1) 0%, 
-                            rgba(255,255,255,0.3) 50%, 
-                            rgba(255,255,255,0.1) 100%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-            z-index: -1;
-        }
-        
-        .btn:hover::before {
-            transform: translateX(100%);
-        }
-        
-        .btn i {
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-        }
-        
-        .btn span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            opacity: 0.9;
-            margin-top: 0.3rem;
-        }
-        
-        /* Specific Button Colors */
-        .btn:nth-child(1) {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-        }
-        
-        .btn:nth-child(2) {
-            background: linear-gradient(135deg, #3a0ca3, var(--secondary));
-        }
-        
-        .btn:nth-child(3) {
-            background: linear-gradient(135deg, var(--accent), #b5179e);
-        }
-        
-        .btn:nth-child(4) {
-            background: linear-gradient(135deg, #560bad, #7209b7);
-        }
-        
-        .btn:nth-child(5) {
-            background: linear-gradient(135deg, #f8961e, #f3722c);
-        }
-        
-        .btn:nth-child(6) {
-            background: linear-gradient(135deg, #4cc9f0, #4895ef);
+        @keyframes gradientShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
         
         /* Floating Elements */
@@ -360,169 +101,510 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0;
-            pointer-events: none;
+            z-index: -1;
         }
         
         .floating-element {
             position: absolute;
-            border-radius: 50%;
-            background: rgba(67, 97, 238, 0.05);
-            animation: float 15s infinite linear;
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: float 15s infinite linear;
+            opacity: 0;
         }
         
         @keyframes float {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(100vh) scale(0.5);
                 opacity: 0;
             }
             10% {
-                opacity: 0.3;
+                opacity: 0.4;
             }
             90% {
-                opacity: 0.3;
+                opacity: 0.4;
             }
             100% {
-                transform: translateY(-1000px) rotate(720deg);
+                transform: translateY(-20vh) scale(1);
                 opacity: 0;
             }
         }
         
-        /* Footer */
-        footer {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--gray);
-            width: 100%;
-            max-width: 800px;
-            background: var(--glass-bg);
-            border-radius: var(--border-radius);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
+        /* Scroll Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dark));
+            z-index: 1000;
+            transition: width 0.1s ease-out;
         }
         
-        /* Telegram Support Button */
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* STICKY ANNOUNCEMENT SECTION - Enhanced Design */
+        .announcement-container {
+            position: sticky;
+            top: var(--spacing-md);
+            z-index: 100;
+            background: rgba(25, 57, 64, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--accent-green);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+        
+        .announcement-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-green-dark);
+        }
+        
+        .announcement-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 1px solid rgba(155, 242, 114, 0.3);
+        }
+        
+        .announcement-header i {
+            margin-right: var(--spacing-xs);
+            font-size: 1.4rem;
+            color: var(--accent-green);
+            filter: drop-shadow(0 0 10px rgba(155, 242, 114, 0.5));
+            animation: pulse 2s infinite;
+        }
+        
+        .announcement-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .announcement-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+        
+        .announcement-content p {
+            margin-bottom: var(--spacing-xs);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-small);
+            background: rgba(25, 57, 64, 0.5);
+            border-left: 3px solid var(--accent-green);
+            animation: slideInUp 0.8s forwards;
+            opacity: 0;
+        }
+        
+        .dictionary-btn {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: rgba(122, 191, 90, 0.2);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-green);
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .dictionary-btn:hover {
+            background: rgba(122, 191, 90, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(122, 191, 90, 0.2);
+        }
+        
+        /* MAIN HEADER - Immersive Design */
+        header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            background: rgba(25, 57, 64, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-large);
+            border: 1px solid var(--accent-green);
+            box-shadow: var(--shadow-elevation);
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(155, 242, 114, 0.1) 0%, transparent 70%);
+            animation: glow 6s ease infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes glow {
+            0% { transform: translate(-25%, -25%); opacity: 0.3; }
+            100% { transform: translate(25%, 25%); opacity: 0.6; }
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            font-weight: 800;
+            background: linear-gradient(90deg, #fff 0%, var(--accent-green) 50%, var(--accent-green-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(155, 242, 114, 0.3);
+            transform: translateZ(50px);
+        }
+        
+        .khmer-welcome {
+            font-family: 'Koulen', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin: var(--spacing-md) 0;
+            color: var(--primary-light);
+            position: relative;
+            display: inline-block;
+            padding: 0 var(--spacing-sm);
+            text-shadow: 0 0 10px rgba(186, 200, 217, 0.3);
+            transform: translateZ(30px);
+        }
+        
+        h2 {
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            font-weight: 500;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-light);
+            letter-spacing: 0.5px;
+            transform: translateZ(20px);
+        }
+        
+        .instructor {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            font-weight: 500;
+            background: rgba(25, 57, 64, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: inline-block;
+            border: 1px solid var(--accent-green);
+            transform: translateZ(40px);
+        }
+        
+        .instructor span {
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+        
+        /* BUTTONS GRID - Modern Design */
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        /* MODERN CARD STYLES */
+        .modern-card {
+            position: relative;
+            padding: var(--spacing-lg);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-primary);
+            border-radius: var(--border-radius);
+            background: rgba(25, 57, 64, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(155, 242, 114, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            min-height: 180px;
+            cursor: pointer;
+            z-index: 1;
+            transform-style: preserve-3d;
+        }
+        
+        .modern-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(155, 242, 114, 0.1) 0%, 
+                rgba(122, 191, 90, 0.2) 50%, 
+                rgba(155, 242, 114, 0.1) 100%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-8px) scale(1.02) translateZ(10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-green);
+            background: rgba(25, 57, 64, 0.8);
+        }
+        
+        .modern-card:hover::before {
+            opacity: 1;
+        }
+        
+        .modern-card:active {
+            transform: translateY(-4px) scale(0.98);
+        }
+        
+        .modern-card i {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+            transition: var(--transition-smooth);
+        }
+        
+        .modern-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 4px 12px rgba(155, 242, 114, 0.4));
+        }
+        
+        .modern-card span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: var(--spacing-xs);
+            line-height: 1.4;
+        }
+        
+        .modern-card .card-highlight {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(155, 242, 114, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+        
+        .modern-card:hover .card-highlight {
+            opacity: 1;
+        }
+        
+        /* SPECIAL REWARDS CARD */
+        .modern-card.rewards {
+            background: linear-gradient(135deg, 
+                rgba(155, 242, 114, 0.15) 0%, 
+                rgba(122, 191, 90, 0.25) 100%);
+            border: 1px solid var(--accent-green);
+        }
+        
+        .modern-card.rewards::before {
+            background: linear-gradient(135deg, 
+                rgba(155, 242, 114, 0.2) 0%, 
+                rgba(122, 191, 90, 0.3) 100%);
+        }
+        
+        .modern-card.rewards i {
+            animation: bounce 2s infinite;
+        }
+        
+        /* MODERN FOOTER */
+        footer {
+            text-align: center;
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            background: rgba(25, 57, 64, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--accent-green);
+            box-shadow: var(--shadow-glass);
+        }
+        
+        footer i {
+            color: var(--accent-green);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        /* TELEGRAM SUPPORT - Modern Design */
         .telegram-support {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #0088cc, #00aced);
+            bottom: 30px;
+            right: 30px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.9), rgba(0, 172, 237, 0.9));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 136, 204, 0.3);
             z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: var(--transition-bounce);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
         }
         
         .telegram-support:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.4);
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 20px 45px rgba(0, 136, 204, 0.5);
         }
         
         .telegram-support svg {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             fill: white;
-            transition: var(--transition);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
         
-        /* Telegram Popup */
+        /* TELEGRAM POPUP - Modern Design */
         .telegram-popup {
             position: fixed;
-            bottom: 100px;
-            right: 25px;
-            width: 280px;
-            background: white;
+            bottom: 110px;
+            right: 30px;
+            width: 320px;
+            background: rgba(25, 57, 64, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--accent-green);
+            box-shadow: var(--shadow-elevation);
             z-index: 1001;
-            transform: translateY(20px);
+            transform: translateY(20px) scale(0.9);
             opacity: 0;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
             overflow: hidden;
             display: none;
         }
         
         .telegram-popup.show {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             opacity: 1;
             display: block;
         }
         
         .telegram-popup-header {
-            background: linear-gradient(135deg, #0088cc, #00aced);
-            padding: 12px 15px;
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.9), rgba(0, 172, 237, 0.9));
+            padding: var(--spacing-md);
             color: white;
-            font-weight: 600;
+            font-weight: 700;
             display: flex;
             align-items: center;
+            font-size: 1rem;
         }
         
         .telegram-popup-header svg {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            margin-right: var(--spacing-xs);
         }
         
         .telegram-popup-body {
-            padding: 15px;
-            color: var(--dark);
-            font-size: 14px;
-            line-height: 1.5;
+            padding: var(--spacing-md);
+            color: var(--primary-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         .telegram-popup-footer {
-            padding: 10px 15px;
+            padding: var(--spacing-md);
             display: flex;
             justify-content: flex-end;
-            border-top: 1px solid var(--light-gray);
+            border-top: 1px solid rgba(155, 242, 114, 0.2);
         }
         
         .telegram-popup-btn {
-            background: linear-gradient(135deg, #0088cc, #00aced);
-            color: white;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dark));
+            color: var(--primary-dark);
             border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 13px;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+            backdrop-filter: blur(5px);
         }
         
         .telegram-popup-btn:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 5px 15px rgba(155, 242, 114, 0.3);
         }
         
         .telegram-popup-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.3);
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .telegram-popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
         }
         
         .telegram-popup-close::before,
         .telegram-popup-close::after {
             content: '';
             position: absolute;
-            width: 10px;
+            width: 12px;
             height: 2px;
             background: white;
+            border-radius: 1px;
         }
         
         .telegram-popup-close::before {
@@ -533,256 +615,163 @@
             transform: rotate(-45deg);
         }
         
-        /* Responsive Design */
+        /* ANIMATIONS */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        
+        /* SCROLL SNAP SECTIONS (for immersive scrolling) */
+        .scroll-section {
+            scroll-snap-align: start;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .container {
-                padding: 1.5rem;
+                padding: var(--spacing-md);
             }
             
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .khmer-welcome {
-                font-size: 1.6rem;
-            }
-            
-            h2 {
-                font-size: 1.1rem;
+            .announcement-container {
+                top: var(--spacing-sm);
+                margin-bottom: var(--spacing-md);
+                padding: var(--spacing-md);
             }
             
             .buttons-container {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: var(--spacing-sm);
             }
             
-            .btn {
-                padding: 1.3rem;
-                font-size: 1.1rem;
-                min-height: 100px;
-            }
-            
-            .announcement-container {
-                padding: 1.2rem;
-            }
-            
-            .announcement-content {
-                font-size: 1rem;
+            .modern-card {
+                padding: var(--spacing-md);
+                min-height: 140px;
             }
             
             .telegram-support {
-                width: 50px;
-                height: 50px;
+                width: 56px;
+                height: 56px;
                 bottom: 20px;
                 right: 20px;
             }
             
             .telegram-support svg {
-                width: 24px;
-                height: 24px;
+                width: 28px;
+                height: 28px;
             }
             
             .telegram-popup {
-                width: 260px;
+                width: 280px;
                 right: 20px;
-                bottom: 85px;
+                bottom: 90px;
+            }
+            
+            .dictionary-btn {
+                position: static;
+                margin-bottom: var(--spacing-sm);
+                align-self: flex-start;
             }
         }
         
         @media (max-width: 480px) {
+            :root {
+                --spacing-xs: 0.25rem;
+                --spacing-sm: 0.75rem;
+                --spacing-md: 1rem;
+                --spacing-lg: 1.5rem;
+                --spacing-xl: 2rem;
+            }
+            
             .container {
-                padding: 1rem;
+                padding: var(--spacing-sm);
             }
             
-            h1 {
+            header {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+            
+            .modern-card i {
                 font-size: 1.8rem;
-            }
-            
-            .khmer-welcome {
-                font-size: 1.4rem;
-            }
-            
-            .announcement-container {
-                padding: 1rem;
-            }
-            
-            .btn i {
-                font-size: 1.5rem;
-                margin-bottom: 0.6rem;
-            }
-            
-            .dictionary-btn {
-                top: 0.8rem;
-                right: 1rem;
-                padding: 5px 10px;
-                font-size: 0.7rem;
+                margin-bottom: var(--spacing-xs);
             }
         }
-.spin-glass-btn.rewards {
-  background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.15),
-      rgba(255, 255, 255, 0.05)
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255, 218, 121, 0.85),
-      rgba(255, 105, 180, 0.85),
-      rgba(255, 168, 255, 0.85)
-    );
-  background-blend-mode: overlay, normal;
-  box-shadow:
-    inset -4px -4px 10px rgba(255, 255, 255, 0.4),
-    inset 4px 4px 14px rgba(0, 0, 0, 0.1),
-    0 12px 30px rgba(255, 174, 201, 0.35),
-    0 0 0 4px rgba(255, 255, 255, 0.25);
-}
-
-.spin-glass-btn.rewards:hover {
-  box-shadow:
-    inset -4px -4px 10px rgba(255, 255, 255, 0.4),
-    inset 4px 4px 14px rgba(0, 0, 0, 0.1),
-    0 18px 40px rgba(255, 174, 201, 0.5),
-    0 0 0 4px rgba(255, 255, 255, 0.35);
-}
-
-.spin-glass-btn.rewards:active {
-  box-shadow:
-    inset 2px 2px 5px rgba(0, 0, 0, 0.2),
-    0 8px 20px rgba(255, 204, 128, 0.4),
-    0 0 0 4px rgba(255, 255, 255, 0.2);
-}
         
-       .spin-glass-btn {
-  width: 100%;
-  min-height: 120px;
-  padding: 1.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: #fff;
-  border-radius: var(--border-radius);
-  background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.15),
-      rgba(255, 255, 255, 0.05)
-    ),
-    linear-gradient(
-      135deg,
-      rgba(0, 230, 195, 0.8),
-      rgba(255, 128, 204, 0.8),
-      rgba(166, 244, 197, 0.8)
-    );
-  background-blend-mode: overlay, normal;
-  backdrop-filter: blur(12px);
-  box-shadow:
-    inset -4px -4px 10px rgba(255, 255, 255, 0.4),
-    inset 4px 4px 14px rgba(0, 0, 0, 0.1),
-    0 12px 30px rgba(255, 105, 180, 0.25),
-    0 0 0 4px rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255,255,255,0.2);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  z-index: 10;
-}
-
-.spin-glass-btn::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.1) 45%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0.1) 55%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(30deg);
-  z-index: 1;
-  animation: shine 4s infinite;
-}
-
-.spin-glass-btn span {
-  position: relative;
-  z-index: 2;
-  display: block;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.spin-glass-btn span:last-child {
-  font-size: 0.9rem;
-  font-weight: 400;
-  opacity: 0.9;
-  margin-top: 0.3rem;
-}
-
-
-.spin-glass-btn i {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
-  transition: transform 0.5s ease;
-}
-
-.spin-glass-btn:hover {
-  transform: translateY(-5px);
-  box-shadow:
-    inset -4px -4px 10px rgba(255, 255, 255, 0.4),
-    inset 4px 4px 14px rgba(0, 0, 0, 0.1),
-    0 18px 40px rgba(255, 105, 180, 0.4),
-    0 0 0 4px rgba(255, 255, 255, 0.3);
-}
-
-.spin-glass-btn:hover i {
-  animation: spin 1.5s linear infinite;
-}
-
-.spin-glass-btn:active {
-  transform: scale(0.95) translateY(-2px);
-  box-shadow:
-    inset 2px 2px 5px rgba(0,0,0,0.2),
-    0 8px 20px rgba(0, 255, 204, 0.4),
-    0 0 0 4px rgba(255, 255, 255, 0.1);
-}
-
-
-@keyframes shine {
-  0% { transform: translateX(-100%) rotate(30deg); }
-  20% { transform: translateX(100%) rotate(30deg); }
-  100% { transform: translateX(100%) rotate(30deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+        /* ACCESSIBILITY */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        /* HIGH CONTRAST MODE */
+        @media (prefers-contrast: high) {
+            :root {
+                --glass-white: rgba(255, 255, 255, 0.9);
+                --glass-border: rgba(255, 255, 255, 0.8);
+                --text-primary: #ffffff;
+                --text-secondary: #ffffff;
+            }
+        }
     </style>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
+    <div class="scroll-progress"></div>
+    
     <div class="floating-elements">
-        <!-- These will be generated by JavaScript -->
+        <!-- Floating elements will be generated by JavaScript -->
     </div>
     
     <div class="container">
-        <!-- Configurable Announcement Section -->
+        <!-- STICKY ANNOUNCEMENT SECTION -->
         <div class="announcement-container" data-aos="fade-down" id="announcement-box">
-            <a href="https://daravuth995.github.io/Dictionary-/" class="dictionary-btn">📘 Dictionary</a>
+            <a href="https://daravuth995.github.io/Dictionary-/" class="dictionary-btn">
+                <i class="fas fa-book"></i> Dictionary
+            </a>
             <div class="announcement-header">
                 <i class="fas fa-bullhorn" id="announcement-icon"></i>
                 <h3 id="announcement-title">IMPORTANT ANNOUNCEMENT</h3>
@@ -792,77 +781,76 @@
             </div>
         </div>
         
+        <!-- IMMERSIVE HEADER SECTION -->
         <header data-aos="fade-up">
             <h1>Welcome to Our Classroom</h1>
             <div class="khmer-welcome" data-aos="fade-up" data-aos-delay="200">ស្វាគមន៍មកកាន់ថ្នាក់រៀន</div>
             <h2 data-aos="fade-up" data-aos-delay="400">Interactive Learning Portal</h2>
             <p class="instructor" data-aos="fade-up" data-aos-delay="600">Instructor: <span>Daravuth Yon</span></p>
         </header>
-        <button class="spin-glass-btn rewards" onclick="window.location.href='https://daravuth995.github.io/Rewards-Shop/'" data-aos="zoom-in" data-aos-delay="1000">
-  <i class="fas fa-gift"></i>
-  <span>Rewards Shop</span>
-  <span>Use Your Points for Rewards!</span>
-</button>
-        <div class="buttons-container">
-       <a href="https://daravuth995.github.io/Attendance-/" class="btn" data-aos="zoom-in" data-aos-delay="400">
-        <i class="fas fa-user-check"></i> Attendance Check
-        <span>
-            Track your attendance record<br>
-            <span style="font-size: 13px; color: #888;">តាមដានវត្តមានរបស់អ្នក</span>
-        </span>
-    </a>
-              <a href="https://daravuth995.github.io/Monthly-Evaluation-/" class="btn" data-aos="zoom-in" data-aos-delay="300">
-        <i class="fas fa-clipboard-check"></i> Student Portal
-        <span>
-            Your complete classroom hub<br>
-            <span style="font-size: 13px; color: #888;">តាមដានដំណើរការសិក្សា</span>
-        </span>
-    </a>
-      <a href="https://daravuth995.github.io/Practical-Portal/" class="btn" data-aos="zoom-in" data-aos-delay="600">
-        <i class="fas fa-flask"></i> Practical Class
-        <span>
-            Access lab materials<br>
-            <span style="font-size: 13px; color: #888;">មេរៀន​ លំហាត់ ការអនុវត្តន៍</span>
-        </span>
-    </a>
-    <a href="https://daravuth995.github.io/livesessions/" class="btn" data-aos="zoom-in" data-aos-delay="200">
-        <i class="fas fa-video"></i> Live Sessions
-        <span>
-            Join interactive live classes<br>
-            <span style="font-size: 13px; color: #888;">ចូលរៀនផ្ទាល់</span>
-        </span>
-    </a>
-    
-             <button class="spin-glass-btn" id="spinZoneBtn" data-aos="zoom-in" data-aos-delay="700">
-  <div class="spin-content">
-    <i class="fas fa-sync-alt"></i>
-    <strong>🎮 Play & Earn</strong>
-    <span>
-      Classroom game for random selection<br>
-      <span style="font-size: 13px; color: #888;">ការកម្សាន្ត​ & ជ្រើសរើសរង្វាន់</span>
-    </span>
-  </div>
-</button>
 
-<script>
-  document.getElementById('spinZoneBtn').addEventListener('click', function () {
-    window.location.href = 'https://daravuth995.github.io/Flip-Game-Official-/'; // Update this URL as needed
-  });
-</script>
+        <!-- SPECIAL REWARDS CARD -->
+        <button class="modern-card rewards" onclick="window.location.href='https://daravuth995.github.io/Rewards-Shop/'" data-aos="zoom-in" data-aos-delay="800">
+            <i class="fas fa-gift"></i>
+            <span>Rewards Shop</span>
+            <span>Use Your Points for Amazing Rewards!</span>
+            <div class="card-highlight"></div>
+        </button>
         
-        <footer data-aos="fade-up" data-aos-delay="700">
-            <p>© 2025 Classroom Portal | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Students</p>
+        <!-- MODERN BUTTONS GRID -->
+        <div class="buttons-container">
+            <a href="https://daravuth995.github.io/livesessions/" class="modern-card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-video"></i>
+                <span>Live Sessions</span>
+                <span>Join interactive live classes<br><small style="opacity: 0.7;">ចូលរៀនផ្ទាល់</small></span>
+                <div class="card-highlight"></div>
+            </a>
+
+            <a href="https://daravuth995.github.io/Monthly-Evaluation-/" class="modern-card" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Student Portal</span>
+                <span>Your complete classroom hub<br><small style="opacity: 0.7;">តាមដានដំណើរការសិក្សា</small></span>
+                <div class="card-highlight"></div>
+            </a>
+            
+            <a href="https://daravuth995.github.io/Attendance-/" class="modern-card" data-aos="zoom-in" data-aos-delay="400">
+                <i class="fas fa-user-check"></i>
+                <span>Attendance Check</span>
+                <span>Track your attendance record<br><small style="opacity: 0.7;">តាមដានវត្តមានរបស់អ្នក</small></span>
+                <div class="card-highlight"></div>
+            </a>
+
+            <a href="https://daravuth995.github.io/Practical-Portal/" class="modern-card" data-aos="zoom-in" data-aos-delay="600">
+                <i class="fas fa-flask"></i>
+                <span>Practical Class</span>
+                <span>Access lab materials<br><small style="opacity: 0.7;">មេរៀន​ លំហាត់ ការអនុវត្តន៍</small></span>
+                <div class="card-highlight"></div>
+            </a>
+
+            <button class="modern-card" id="spinZoneBtn" data-aos="zoom-in" data-aos-delay="700">
+                <div class="spin-content">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Play & Earn</span>
+                    <span>Classroom game for random selection<br><small style="opacity: 0.7;">ការកម្សាន្ត​ & ជ្រើសរើសរង្វាន់</small></span>
+                </div>
+                <div class="card-highlight"></div>
+            </button>
+        </div>
+        
+        <!-- MODERN FOOTER -->
+        <footer data-aos="fade-up" data-aos-delay="900">
+            <p>© 2025 Modern Student Portal | Designed with <i class="fas fa-heart"></i> for Learning Excellence</p>
         </footer>
     </div>
     
-    <!-- Telegram Support Button -->
-    <a href="https://t.me/alita995" class="telegram-support" target="_blank" rel="noopener noreferrer" data-aos="zoom-in" data-aos-delay="800" data-aos-anchor-placement="center-bottom">
+    <!-- TELEGRAM SUPPORT BUTTON -->
+    <a href="https://t.me/alita995" class="telegram-support" target="_blank" rel="noopener noreferrer" data-aos="zoom-in" data-aos-delay="1000">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
         </svg>
     </a>
 
-    <!-- Telegram Popup Message -->
+    <!-- TELEGRAM POPUP -->
     <div class="telegram-popup">
         <div class="telegram-popup-close"></div>
         <div class="telegram-popup-header">
@@ -872,93 +860,125 @@
             Telegram Support
         </div>
         <div class="telegram-popup-body">
-            Hi there! 👋 How may I help you today? Contact me for any questions about the course materials or assignments.
+            Need help with your studies? Contact me for any questions about course materials or assignments. I'm here to support your learning journey!
         </div>
         <div class="telegram-popup-footer">
-            <button class="telegram-popup-btn" onclick="window.open('https://t.me/alita995', '_blank')">Message Instructor</button>
+            <button class="telegram-popup-btn" onclick="window.open('https://t.me/alita995', '_blank')">
+                Message Instructor
+            </button>
         </div>
     </div>
     
     <!-- AOS Library Initialization -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <script>
-        // Initialize AOS
+    <script>
+        // Initialize AOS with enhanced settings
         AOS.init({
             duration: 800,
-            easing: 'ease-in-out',
+            easing: 'ease-out-cubic',
             once: true,
-            mirror: false
+            mirror: false,
+            anchorPlacement: 'top-bottom',
+            offset: 50
         });
         
         // Create floating elements
-        const floatingContainer = document.querySelector('.floating-elements');
-        const colors = ['rgba(67, 97, 238, 0.05)', 'rgba(58, 12, 163, 0.05)', 'rgba(247, 37, 133, 0.05)', 'rgba(86, 11, 173, 0.05)'];
+        const elementsContainer = document.querySelector('.floating-elements');
+        const elementShapes = ['circle', 'square', 'triangle'];
         
-        for (let i = 0; i < 12; i++) {
+        for (let i = 0; i < 25; i++) {
             const element = document.createElement('div');
             element.classList.add('floating-element');
             
-            // Random properties
-            const size = Math.random() * 80 + 30;
+            const size = Math.random() * 60 + 30;
             const posX = Math.random() * window.innerWidth;
-            const posY = Math.random() * window.innerHeight + window.innerHeight;
-            const color = colors[Math.floor(Math.random() * colors.length)];
             const delay = Math.random() * 15;
-            const duration = 10 + Math.random() * 25;
+            const duration = 10 + Math.random() * 20;
+            const opacity = Math.random() * 0.1 + 0.05;
+            const shape = elementShapes[Math.floor(Math.random() * elementShapes.length)];
             
             element.style.width = `${size}px`;
             element.style.height = `${size}px`;
             element.style.left = `${posX}px`;
-            element.style.top = `${posY}px`;
-            element.style.background = color;
+            element.style.opacity = opacity;
             element.style.animationDelay = `${delay}s`;
             element.style.animationDuration = `${duration}s`;
             
-            if (Math.random() > 0.7) {
-                element.style.filter = `blur(${Math.random() * 2}px)`;
+            // Apply different shapes
+            if (shape === 'circle') {
+                element.style.borderRadius = '50%';
+            } else if (shape === 'triangle') {
+                element.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+                element.style.background = 'transparent';
+                element.style.borderLeft = `${size/2}px solid transparent`;
+                element.style.borderRight = `${size/2}px solid transparent`;
+                element.style.borderBottom = `${size}px solid rgba(155, 242, 114, ${opacity})`;
+                element.style.width = '0';
+                element.style.height = '0';
             }
             
-            floatingContainer.appendChild(element);
+            // Add random blur and border effects
+            if (Math.random() > 0.7) {
+                element.style.filter = `blur(${Math.random() * 3}px)`;
+            }
+            
+            elementsContainer.appendChild(element);
         }
         
-        // Telegram Popup Functionality
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            document.querySelector('.scroll-progress').style.width = `${scrollProgress}%`;
+        });
+        
+        // Enhanced Telegram Popup Functionality
         const telegramPopup = document.querySelector('.telegram-popup');
         const telegramPopupClose = document.querySelector('.telegram-popup-close');
+        const telegramSupport = document.querySelector('.telegram-support');
         
-        // Show popup after 3 seconds
+        // Show popup after 4 seconds with enhanced animation
         setTimeout(() => {
             telegramPopup.classList.add('show');
             
-            // Auto-hide after 10 seconds
+            // Auto-hide after 12 seconds
             setTimeout(() => {
                 if (telegramPopup.classList.contains('show')) {
                     telegramPopup.classList.remove('show');
                 }
-            }, 10000);
-        }, 3000);
+            }, 12000);
+        }, 4000);
         
-        // Close button functionality
+        // Enhanced close functionality
         telegramPopupClose.addEventListener('click', () => {
             telegramPopup.classList.remove('show');
         });
         
-        // Also close when clicking on Telegram support button
-        document.querySelector('.telegram-support').addEventListener('click', () => {
+        // Close when clicking Telegram support button
+        telegramSupport.addEventListener('click', () => {
             telegramPopup.classList.remove('show');
         });
         
-        // Spin Zone Game Functionality
-        document.getElementById('spinZoneBtn').addEventListener('click', function(e) {
-            e.preventDefault();
+        // Close popup when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!telegramPopup.contains(e.target) && !telegramSupport.contains(e.target)) {
+                telegramPopup.classList.remove('show');
+            }
+        });
+        
+        // Spin Zone Game Functionality - PRESERVED
+        document.getElementById('spinZoneBtn').addEventListener('click', function() {
+            window.location.href = 'https://daravuth995.github.io/Flip-Game-Official-/';
         });
         
         // ==============================================
-        // GOOGLE SHEETS BACKEND INTEGRATION
+        // GOOGLE SHEETS BACKEND INTEGRATION - PRESERVED
         // ==============================================
         // Replace with your Google Apps Script Web App URL
         const BACKEND_URL = 'https://script.google.com/macros/s/AKfycby7Ca0rv5uZAalC7l0jyeQM2JQ2iX34LwW_CKB41cYiu2n4jZ9A6aK-SdGfaPkmYUmmoA/exec';
         
-        // DOM Elements
+        // DOM Elements - PRESERVED
         const announcementBox = document.getElementById('announcement-box');
         const announcementTitle = document.getElementById('announcement-title');
         const announcementMessages = document.getElementById('announcement-messages');
@@ -968,7 +988,7 @@
         const pageSubtitle = document.querySelector('h2');
         const instructorName = document.querySelector('.instructor span');
         
-        // Default configuration (fallback if API fails)
+        // Default configuration (fallback if API fails) - PRESERVED
         const defaultConfig = {
             title: "Welcome to Our Classroom",
             khmerWelcome: "ស្វាគមន៍មកកាន់ថ្នាក់រៀន",
@@ -990,7 +1010,7 @@
             underlineDelay: 1.5
         };
         
-        // Fetch data from Google Sheets
+        // Fetch data from Google Sheets - PRESERVED
         async function fetchData() {
             try {
                 const response = await fetch(BACKEND_URL);
@@ -1002,7 +1022,7 @@
             }
         }
         
-        // Update the page with new data
+        // Update the page with new data - PRESERVED
         async function updatePage() {
             const config = await fetchData();
             
@@ -1016,11 +1036,6 @@
             announcementTitle.textContent = config.announcementTitle || defaultConfig.announcementTitle;
             announcementIcon.className = defaultConfig.icon;
             
-            // Apply custom colors
-            announcementBox.style.background = defaultConfig.bgColor;
-            announcementBox.style.borderLeftColor = defaultConfig.borderColor;
-            announcementBox.style.color = defaultConfig.textColor;
-            
             // Clear any existing messages
             announcementMessages.innerHTML = '';
             
@@ -1030,7 +1045,7 @@
                 const p = document.createElement('p');
                 p.innerHTML = message.trim();
                 p.style.opacity = '0';
-                p.style.animation = 'fadeIn 1s forwards';
+                p.style.animation = 'slideInUp 0.8s forwards';
                 p.style.animationDelay = `${defaultConfig.initialDelay + (index * defaultConfig.betweenMessagesDelay)}s`;
                 
                 // Apply typewriter effect if enabled
@@ -1053,33 +1068,70 @@
                 }
                 
                 announcementMessages.appendChild(p);
-                
-                // Add underline to first message
-                if (index === 0) {
-                    const underline = document.createElement('div');
-                    underline.style.position = 'absolute';
-                    underline.style.bottom = '-5px';
-                    underline.style.left = '0';
-                    underline.style.width = '100%';
-                    underline.style.height = '2px';
-                    underline.style.background = defaultConfig.borderColor;
-                    underline.style.transform = 'scaleX(0)';
-                    underline.style.transformOrigin = 'left';
-                    underline.style.animation = 'underlineExpand 1.5s forwards';
-                    underline.style.animationDelay = `${defaultConfig.underlineDelay}s`;
-                    
-                    p.style.position = 'relative';
-                    p.style.display = 'inline-block';
-                    p.appendChild(underline);
-                }
             });
         }
         
-        // Initialize the page
+        // Initialize the page - PRESERVED
         document.addEventListener('DOMContentLoaded', updatePage);
         
-        // Optional: Refresh data periodically (every 5 minutes)
+        // Optional: Refresh data periodically (every 5 minutes) - PRESERVED
         setInterval(updatePage, 5 * 60 * 1000);
+        
+        // Enhanced scroll behavior for sticky announcement
+        let lastScrollY = window.scrollY;
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const announcementContainer = document.querySelector('.announcement-container');
+            
+            if (currentScrollY > lastScrollY) {
+                // Scrolling down
+                announcementContainer.style.transform = 'translateY(-5px)';
+                announcementContainer.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.3)';
+            } else {
+                // Scrolling up
+                announcementContainer.style.transform = 'translateY(0)';
+                announcementContainer.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+        
+        // Add smooth parallax effect to header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            const header = document.querySelector('header');
+            
+            if (header) {
+                header.style.transform = `translateY(${rate}px)`;
+            }
+        });
+        
+        // Performance optimization: Reduce animations on low-end devices
+        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+            document.documentElement.style.setProperty('--transition-smooth', 'all 0.2s ease');
+            document.documentElement.style.setProperty('--transition-bounce', 'all 0.3s ease');
+        }
+        
+        // Add intersection observer for enhanced animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all modern cards for enhanced animations
+        document.querySelectorAll('.modern-card').forEach(card => {
+            observer.observe(card);
+        });
     </script>
 </body>
 </html>
