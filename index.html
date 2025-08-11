@@ -10,26 +10,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Koulen&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* New Color Palette */
-            --primary-light: #BAC8D9;
-            --primary-dark: #193940;
-            --accent-green: #9BF272;
-            --accent-green-dark: #7ABF5A;
-            
-            /* Derived Colors */
-            --primary: rgba(26, 57, 64, 0.9);
-            --secondary: rgba(155, 242, 114, 0.7);
+            /* Modern Glassmorphism Color Palette */
+            --primary-dark: #0f0e17;
+            --primary-light: #fffffe;
+            --accent-neon: #00ff9d;
+            --accent-purple: #bd93f9;
+            --accent-pink: #ff79c6;
+            --accent-blue: #8be9fd;
             
             /* Glassmorphism Variables */
-            --glass-white: rgba(255, 255, 255, 0.25);
-            --glass-white-light: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-white: rgba(255, 255, 255, 0.15);
+            --glass-white-light: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
             --glass-shadow: rgba(31, 38, 135, 0.37);
             
             /* Theme Colors */
-            --background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2e2e 100%);
+            --background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%);
             --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-secondary: rgba(255, 255, 255, 0.9);
             --text-muted: rgba(255, 255, 255, 0.6);
             
             /* Design System */
@@ -43,10 +41,10 @@
             --spacing-xl: 3rem;
             
             /* Shadows */
-            --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.1);
-            --shadow-floating: 0 15px 35px rgba(0, 0, 0, 0.2);
-            --shadow-elevation: 0 25px 50px rgba(0, 0, 0, 0.3);
+            --shadow-glass: 0 8px 32px 0 rgba(0, 255, 157, 0.2);
+            --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.3);
+            --shadow-floating: 0 15px 35px rgba(0, 0, 0, 0.4);
+            --shadow-elevation: 0 25px 50px rgba(0, 0, 0, 0.5);
             
             /* Transitions */
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -72,7 +70,7 @@
             scroll-behavior: smooth;
         }
         
-        /* New Background Effects */
+        /* Glassmorphism Background Effects */
         body::before {
             content: '';
             position: fixed;
@@ -81,9 +79,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(186, 200, 217, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(155, 242, 114, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 50%, rgba(25, 57, 64, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 157, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(189, 147, 249, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 50%, rgba(139, 233, 253, 0.05) 0%, transparent 50%);
             z-index: -2;
             animation: gradientShift 15s ease infinite alternate;
         }
@@ -91,6 +89,22 @@
         @keyframes gradientShift {
             0% { background-position: 0% 0%; }
             100% { background-position: 100% 100%; }
+        }
+        
+        /* Grid Pattern Overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            pointer-events: none;
         }
         
         /* Floating Elements */
@@ -106,9 +120,9 @@
         
         .floating-element {
             position: absolute;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 255, 157, 0.03);
+            backdrop-filter: blur(1px);
+            border: 1px solid rgba(0, 255, 157, 0.1);
             animation: float 15s infinite linear;
             opacity: 0;
         }
@@ -137,9 +151,10 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dark));
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-blue));
             z-index: 1000;
             transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px var(--accent-neon);
         }
         
         /* Main Container */
@@ -151,27 +166,27 @@
             z-index: 1;
         }
         
-        /* STICKY ANNOUNCEMENT SECTION - Enhanced Design */
+        /* STICKY ANNOUNCEMENT SECTION - Glassmorphism Design */
         .announcement-container {
             position: sticky;
             top: var(--spacing-md);
             z-index: 100;
-            background: rgba(25, 57, 64, 0.7);
+            background: rgba(15, 14, 23, 0.8);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--accent-green);
+            border: 1px solid var(--accent-neon);
             border-radius: var(--border-radius);
             padding: var(--spacing-md);
             margin-bottom: var(--spacing-lg);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-glass);
             transition: var(--transition-smooth);
             overflow: hidden;
         }
         
         .announcement-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent-green-dark);
+            box-shadow: 0 15px 40px rgba(0, 255, 157, 0.2);
+            border-color: var(--accent-blue);
         }
         
         .announcement-header {
@@ -179,14 +194,14 @@
             align-items: center;
             margin-bottom: var(--spacing-sm);
             padding-bottom: var(--spacing-xs);
-            border-bottom: 1px solid rgba(155, 242, 114, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.3);
         }
         
         .announcement-header i {
             margin-right: var(--spacing-xs);
             font-size: 1.4rem;
-            color: var(--accent-green);
-            filter: drop-shadow(0 0 10px rgba(155, 242, 114, 0.5));
+            color: var(--accent-neon);
+            filter: drop-shadow(0 0 10px rgba(0, 255, 157, 0.5));
             animation: pulse 2s infinite;
         }
         
@@ -195,10 +210,11 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dark));
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-blue));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-shadow: 0 0 5px rgba(0, 255, 157, 0.3);
         }
         
         .announcement-content {
@@ -211,8 +227,8 @@
             margin-bottom: var(--spacing-xs);
             padding: var(--spacing-xs) var(--spacing-sm);
             border-radius: var(--border-radius-small);
-            background: rgba(25, 57, 64, 0.5);
-            border-left: 3px solid var(--accent-green);
+            background: rgba(15, 14, 23, 0.6);
+            border-left: 3px solid var(--accent-neon);
             animation: slideInUp 0.8s forwards;
             opacity: 0;
         }
@@ -221,10 +237,10 @@
             position: absolute;
             top: var(--spacing-sm);
             right: var(--spacing-sm);
-            background: rgba(122, 191, 90, 0.2);
+            background: rgba(0, 255, 157, 0.15);
             backdrop-filter: blur(10px);
             color: var(--text-primary);
-            border: 1px solid var(--accent-green);
+            border: 1px solid var(--accent-neon);
             padding: 8px 16px;
             font-size: 0.85rem;
             border-radius: var(--border-radius-small);
@@ -238,22 +254,22 @@
         }
         
         .dictionary-btn:hover {
-            background: rgba(122, 191, 90, 0.3);
+            background: rgba(0, 255, 157, 0.25);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(122, 191, 90, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
         }
         
-        /* MAIN HEADER - Immersive Design */
+        /* MAIN HEADER - Glassmorphism Design */
         header {
             text-align: center;
             margin-bottom: var(--spacing-xl);
             position: relative;
             padding: var(--spacing-xl) var(--spacing-lg);
-            background: rgba(25, 57, 64, 0.7);
+            background: rgba(15, 14, 23, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--border-radius-large);
-            border: 1px solid var(--accent-green);
+            border: 1px solid var(--accent-neon);
             box-shadow: var(--shadow-elevation);
             overflow: hidden;
             transform-style: preserve-3d;
@@ -267,7 +283,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(155, 242, 114, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.1) 0%, transparent 70%);
             animation: glow 6s ease infinite alternate;
             z-index: -1;
         }
@@ -281,13 +297,13 @@
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: var(--spacing-md);
             font-weight: 800;
-            background: linear-gradient(90deg, #fff 0%, var(--accent-green) 50%, var(--accent-green-dark) 100%);
+            background: linear-gradient(90deg, #fff 0%, var(--accent-neon) 50%, var(--accent-blue) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: -1px;
             line-height: 1.1;
-            text-shadow: 0 0 20px rgba(155, 242, 114, 0.3);
+            text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
             transform: translateZ(50px);
         }
         
@@ -295,11 +311,11 @@
             font-family: 'Koulen', cursive;
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin: var(--spacing-md) 0;
-            color: var(--primary-light);
+            color: var(--accent-purple);
             position: relative;
             display: inline-block;
             padding: 0 var(--spacing-sm);
-            text-shadow: 0 0 10px rgba(186, 200, 217, 0.3);
+            text-shadow: 0 0 10px rgba(189, 147, 249, 0.3);
             transform: translateZ(30px);
         }
         
@@ -307,30 +323,30 @@
             font-size: clamp(1.2rem, 2.5vw, 1.6rem);
             font-weight: 500;
             margin-bottom: var(--spacing-md);
-            color: var(--primary-light);
+            color: var(--accent-blue);
             letter-spacing: 0.5px;
             transform: translateZ(20px);
         }
         
         .instructor {
             font-size: 1.1rem;
-            color: var(--primary-light);
+            color: var(--accent-blue);
             font-weight: 500;
-            background: rgba(25, 57, 64, 0.7);
+            background: rgba(15, 14, 23, 0.7);
             backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
             padding: var(--spacing-sm) var(--spacing-md);
             display: inline-block;
-            border: 1px solid var(--accent-green);
+            border: 1px solid var(--accent-neon);
             transform: translateZ(40px);
         }
         
         .instructor span {
             font-weight: 700;
-            color: var(--accent-green);
+            color: var(--accent-neon);
         }
         
-        /* BUTTONS GRID - Modern Design */
+        /* BUTTONS GRID - Glassmorphism Design */
         .buttons-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -338,7 +354,7 @@
             margin: var(--spacing-xl) 0;
         }
         
-        /* MODERN CARD STYLES */
+        /* MODERN CARD STYLES - Glassmorphism */
         .modern-card {
             position: relative;
             padding: var(--spacing-lg);
@@ -347,11 +363,11 @@
             text-decoration: none;
             color: var(--text-primary);
             border-radius: var(--border-radius);
-            background: rgba(25, 57, 64, 0.7);
+            background: rgba(15, 14, 23, 0.7);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(155, 242, 114, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            box-shadow: var(--shadow-card);
             transition: var(--transition-smooth);
             display: flex;
             flex-direction: column;
@@ -373,9 +389,9 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, 
-                rgba(155, 242, 114, 0.1) 0%, 
-                rgba(122, 191, 90, 0.2) 50%, 
-                rgba(155, 242, 114, 0.1) 100%);
+                rgba(0, 255, 157, 0.1) 0%, 
+                rgba(139, 233, 253, 0.2) 50%, 
+                rgba(189, 147, 249, 0.1) 100%);
             opacity: 0;
             transition: var(--transition-smooth);
             z-index: -1;
@@ -383,9 +399,9 @@
         
         .modern-card:hover {
             transform: translateY(-8px) scale(1.02) translateZ(10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent-green);
-            background: rgba(25, 57, 64, 0.8);
+            box-shadow: var(--shadow-floating);
+            border-color: var(--accent-neon);
+            background: rgba(15, 14, 23, 0.8);
         }
         
         .modern-card:hover::before {
@@ -399,7 +415,7 @@
         .modern-card i {
             font-size: 2.2rem;
             margin-bottom: var(--spacing-sm);
-            background: linear-gradient(90deg, var(--accent-green), var(--accent-green-dark));
+            background: linear-gradient(90deg, var(--accent-neon), var(--accent-blue));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -409,7 +425,7 @@
         
         .modern-card:hover i {
             transform: scale(1.1) rotate(5deg);
-            filter: drop-shadow(0 4px 12px rgba(155, 242, 114, 0.4));
+            filter: drop-shadow(0 4px 12px rgba(0, 255, 157, 0.4));
         }
         
         .modern-card span {
@@ -424,7 +440,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(155, 242, 114, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(0, 255, 157, 0.2) 0%, transparent 70%);
             opacity: 0;
             transition: var(--transition-smooth);
             z-index: -1;
@@ -437,19 +453,73 @@
         /* SPECIAL REWARDS CARD */
         .modern-card.rewards {
             background: linear-gradient(135deg, 
-                rgba(155, 242, 114, 0.15) 0%, 
-                rgba(122, 191, 90, 0.25) 100%);
-            border: 1px solid var(--accent-green);
+                rgba(0, 255, 157, 0.15) 0%, 
+                rgba(139, 233, 253, 0.25) 100%);
+            border: 1px solid var(--accent-neon);
         }
         
         .modern-card.rewards::before {
             background: linear-gradient(135deg, 
-                rgba(155, 242, 114, 0.2) 0%, 
-                rgba(122, 191, 90, 0.3) 100%);
+                rgba(0, 255, 157, 0.2) 0%, 
+                rgba(139, 233, 253, 0.3) 100%);
         }
         
         .modern-card.rewards i {
             animation: bounce 2s infinite;
+        }
+        
+        /* AI BUTTON STYLES */
+        .modern-card.ai-button {
+            background: linear-gradient(135deg, 
+                rgba(189, 147, 249, 0.15) 0%, 
+                rgba(255, 121, 198, 0.25) 100%);
+            border: 1px solid var(--accent-purple);
+            box-shadow: 0 0 15px rgba(189, 147, 249, 0.3);
+        }
+        
+        .modern-card.ai-button::before {
+            background: linear-gradient(135deg, 
+                rgba(189, 147, 249, 0.2) 0%, 
+                rgba(255, 121, 198, 0.3) 100%);
+        }
+        
+        .modern-card.ai-button i {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+        }
+        
+        .modern-card.ai-button:hover {
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 25px rgba(255, 121, 198, 0.4);
+        }
+        
+        .modern-card.ai-button:hover .card-highlight {
+            background: radial-gradient(circle at center, rgba(255, 121, 198, 0.3) 0%, transparent 70%);
+        }
+        
+        /* AI Animation Effect */
+        .ai-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--border-radius);
+            background: radial-gradient(circle, rgba(189, 147, 249, 0.4) 0%, transparent 70%);
+            animation: aiPulse 3s infinite;
+            opacity: 0;
+            z-index: -1;
+        }
+        
+        @keyframes aiPulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
         }
         
         /* MODERN FOOTER */
@@ -458,21 +528,21 @@
             margin-top: var(--spacing-xl);
             padding: var(--spacing-lg);
             font-size: 0.9rem;
-            color: var(--primary-light);
-            background: rgba(25, 57, 64, 0.7);
+            color: var(--accent-blue);
+            background: rgba(15, 14, 23, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--border-radius);
-            border: 1px solid var(--accent-green);
+            border: 1px solid var(--accent-neon);
             box-shadow: var(--shadow-glass);
         }
         
         footer i {
-            color: var(--accent-green);
+            color: var(--accent-pink);
             animation: heartbeat 1.5s ease-in-out infinite;
         }
         
-        /* TELEGRAM SUPPORT - Modern Design */
+        /* TELEGRAM SUPPORT - Glassmorphism Design */
         .telegram-support {
             position: fixed;
             bottom: 30px;
@@ -503,17 +573,17 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
         
-        /* TELEGRAM POPUP - Modern Design */
+        /* TELEGRAM POPUP - Glassmorphism Design */
         .telegram-popup {
             position: fixed;
             bottom: 110px;
             right: 30px;
             width: 320px;
-            background: rgba(25, 57, 64, 0.9);
+            background: rgba(15, 14, 23, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--border-radius);
-            border: 1px solid var(--accent-green);
+            border: 1px solid var(--accent-neon);
             box-shadow: var(--shadow-elevation);
             z-index: 1001;
             transform: translateY(20px) scale(0.9);
@@ -547,7 +617,7 @@
         
         .telegram-popup-body {
             padding: var(--spacing-md);
-            color: var(--primary-light);
+            color: var(--accent-blue);
             font-size: 0.95rem;
             line-height: 1.6;
         }
@@ -556,11 +626,11 @@
             padding: var(--spacing-md);
             display: flex;
             justify-content: flex-end;
-            border-top: 1px solid rgba(155, 242, 114, 0.2);
+            border-top: 1px solid rgba(0, 255, 157, 0.2);
         }
         
         .telegram-popup-btn {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-dark));
+            background: linear-gradient(135deg, var(--accent-neon), var(--accent-blue));
             color: var(--primary-dark);
             border: none;
             padding: var(--spacing-xs) var(--spacing-md);
@@ -574,7 +644,7 @@
         
         .telegram-popup-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(155, 242, 114, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
         }
         
         .telegram-popup-close {
@@ -652,15 +722,6 @@
             50% {
                 transform: scale(1.2);
             }
-        }
-        
-        /* SCROLL SNAP SECTIONS (for immersive scrolling) */
-        .scroll-section {
-            scroll-snap-align: start;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         /* RESPONSIVE DESIGN */
@@ -789,13 +850,23 @@
             <p class="instructor" data-aos="fade-up" data-aos-delay="600">Instructor: <span>Daravuth Yon</span></p>
         </header>
 
-        <!-- SPECIAL REWARDS CARD -->
-        <button class="modern-card rewards" onclick="window.location.href='https://daravuth995.github.io/Rewards-Shop/'" data-aos="zoom-in" data-aos-delay="800">
-            <i class="fas fa-gift"></i>
-            <span>Rewards Shop</span>
-            <span>Use Your Points for Amazing Rewards!</span>
-            <div class="card-highlight"></div>
-        </button>
+        <!-- SPECIAL REWARDS CARD AND NEW AI BUTTON -->
+        <div style="display: flex; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+            <button class="modern-card rewards" onclick="window.location.href='https://daravuth995.github.io/Rewards-Shop/'" data-aos="zoom-in" data-aos-delay="800">
+                <i class="fas fa-gift"></i>
+                <span>Rewards Shop</span>
+                <span>Use Your Points for Amazing Rewards!</span>
+                <div class="card-highlight"></div>
+            </button>
+            
+            <button class="modern-card ai-button" id="aiAssistantBtn" data-aos="zoom-in" data-aos-delay="900">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant (Coming Soon...) </span>
+                <span>Get instant help with your studies</span>
+                <div class="card-highlight"></div>
+                <div class="ai-pulse"></div>
+            </button>
+        </div>
         
         <!-- MODERN BUTTONS GRID -->
         <div class="buttons-container">
@@ -912,7 +983,7 @@
                 element.style.background = 'transparent';
                 element.style.borderLeft = `${size/2}px solid transparent`;
                 element.style.borderRight = `${size/2}px solid transparent`;
-                element.style.borderBottom = `${size}px solid rgba(155, 242, 114, ${opacity})`;
+                element.style.borderBottom = `${size}px solid rgba(0, 255, 157, ${opacity})`;
                 element.style.width = '0';
                 element.style.height = '0';
             }
@@ -970,6 +1041,11 @@
         // Spin Zone Game Functionality - PRESERVED
         document.getElementById('spinZoneBtn').addEventListener('click', function() {
             window.location.href = 'https://daravuth995.github.io/Flip-Game-Official-/';
+        });
+        
+        // AI Assistant Button Functionality
+        document.getElementById('aiAssistantBtn').addEventListener('click', function() {
+            alert('AI Assistant feature coming soon! This will provide personalized learning support.');
         });
         
         // ==============================================
